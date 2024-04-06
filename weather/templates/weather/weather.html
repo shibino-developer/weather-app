@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Weather App</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="{% url 'weather' %}" method="get" class="form-group">
+                    <input type="text" name="city" placeholder="Enter city name" class="form-control mb-2">
+                    <button type="submit" class="btn btn-primary btn-block">Get Weather</button>
+                </form>
+            </div>
+        </div>
+        {% if weather_data %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Weather in {{ weather_data.name }}</h2>
+                        <p class="card-text">Temperature: {{ weather_data.main.temp }}°C</p>
+                        <p class="card-text">Weather: {{ weather_data.weather.0.description }}</p>
+                        <p class="card-text">Humidity: {{ weather_data.main.humidity }}%</p>
+                        <p class="card-text">Pressure: {{ weather_data.main.pressure }}hPa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <!-- Bootstrap JS (optional, for some components) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
