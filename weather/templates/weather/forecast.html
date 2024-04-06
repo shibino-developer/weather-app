@@ -1,0 +1,19 @@
+<!-- weather/forecast.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    
+</head>
+<body>
+    <h1>Weather Forecast for {{ forecast_data.city.name }}</h1>
+    <ul>
+        {% for forecast in forecast_data.list %}
+            <li>Date: {{ forecast.dt_txt }}, Temperature: {{ forecast.main.temp }}°C, Weather: {{ forecast.weather.0.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
